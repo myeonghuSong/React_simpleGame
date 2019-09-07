@@ -15,7 +15,12 @@
         class GuGuDan extends React.Component {
             constructor(props) {
                 super(props);
-                
+                this.state = {
+                    first: Math.ceil(Math.random() * 9),
+                    second: Math.ceil(Math.random() * 9),
+                    value: '',
+                    result: '',
+                }
             }
 
             render(){
