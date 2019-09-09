@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Try from './Try';
 
 function getNumbers() { //숫자 네개를 겹치지 않고 랜덤하게 뽑는 함수
     const candidate = [1,2,3,4,5,6,7,8,9];
@@ -61,6 +62,7 @@ class NumberBaseball extends Component {
     };
 
     onChangeInput = (e) => {
+        console.log(this.state.answer);
         this.setState({
             value: e.target.value,
         });
