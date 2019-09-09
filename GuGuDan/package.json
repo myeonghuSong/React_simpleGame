@@ -4,15 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack"
   },
   "author": "madSong",
   "license": "MIT",
   "dependencies": {
     "react": "^16.9.0",
-    "reactdom": "^2.0.0"
+    "react-dom": "^16.9.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "babel-loader": "^8.0.6",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8"
   }
