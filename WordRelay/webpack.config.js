@@ -25,14 +25,18 @@ module.exports = {
                         debug: true,
                     }], 
                     '@babel/preset-react'],
-                plugins: ['@babel/plugin-proposal-class-properties']
+                plugins: [
+                    '@babel/plugin-proposal-class-properties',
+                    'react-hot-loader/babel',
+                ],
             },
         }],
     },
     
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'app.js'
+        filename: 'app.js',
+        publicPath: '/dist/',
     }, //출력
 
 };
