@@ -11,7 +11,7 @@ class ResponseCheck extends Component {
     endTime;
 
     onClickScreen = () => {
-        const { state, message } = this.state;
+        const { state } = this.state;
         if(state === 'waiting'){
             this.setState({
                 state: 'ready',
@@ -30,7 +30,7 @@ class ResponseCheck extends Component {
                 state: 'waiting',
                 message: '너무 성급하시군요! 초록색이 된 후에 클릭하세요.',
             });
-        } else if( state === now ){
+        } else if( state === 'now' ){
             this.endTime = new Date();
             this.setState((prevState)=>{
                 return{
@@ -51,7 +51,7 @@ class ResponseCheck extends Component {
         return this.state.result.length === 0
         ? null
         : <><div>평균시간 : {this.state.result.reduce((a, c) => a + c ) / this.state.result.length}ms</div>
-            <button onClick={this.onReset}></button>
+            <button onClick={this.onReset}>리셋</button>
         </>
     }
 
@@ -62,7 +62,7 @@ class ResponseCheck extends Component {
                 <div
                     id="screen"
                     className={state}
-                    onClick={onClickScreen}
+                    onClick={this.onClickScreen}
                 >
                     {message}
                 </div>

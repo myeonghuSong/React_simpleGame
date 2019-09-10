@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 
 import ResponseCheck from './ResponseCheck';
 
