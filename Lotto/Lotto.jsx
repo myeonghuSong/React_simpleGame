@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import Ball from './Ball';
 
 function getWinNumbers() {
@@ -38,13 +38,13 @@ const Lotto = () => {
           }
     }, [timeouts.current]); //빈 배열이면 componentDidMount와 동일
 
-    const onClickRedo = () => {
+    const onClickRedo = useCallback(() => {
         setWInNumbers(getWinNumbers());
         setWinBalls([]);
         setBonus(null);
         setRedo(false);
         timeouts.current = [];
-    }; 
+    }, [winNumbers]); 
 
     return (
         <>
