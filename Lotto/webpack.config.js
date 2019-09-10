@@ -9,7 +9,7 @@ module.exports = {
     },
 
     entry: {
-        app: ['./clinet'],
+        app: ['./client'],
     }, //입력
 
     module: {
