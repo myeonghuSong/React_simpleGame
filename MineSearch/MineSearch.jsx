@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from 'react';
+import React, { useReducer, createContext, useMemo } from 'react';
 import Table from './Table';
 
 export const TableContext = createContext({
@@ -23,8 +23,10 @@ const reducer = (state, action) => {
 const MineSearch = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     
+    const value = useMemo( () => ({tableData: state.tableData, dispatch}), [state.tableData]);
+
     return (
-        <TableContext.Provider { {tableData: state.tableData, dispatch} }>
+        <TableContext.Provider value={value}>
             <Form />
             <div>{state.timer}</div>
             <Table />
