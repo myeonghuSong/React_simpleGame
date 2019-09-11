@@ -3,7 +3,7 @@ import Table from './Table';
 
 const initialState = {
     winner: '',
-    turn: '0',
+    turn: 'O',
     tableData: [['','',''],['','',''],['','','']],
     recentCell : [-1, -1],
 };
@@ -39,8 +39,8 @@ const reducer = (state, action) => {
         }
         case RESET_GAME : {
             return {
-                winner: '',
-                turn: '0',
+                ...state,
+                turn: 'O',
                 tableData: [['','',''],['','',''],['','','']],
                 recentCell : [-1, -1],
             }
@@ -52,14 +52,13 @@ const reducer = (state, action) => {
 
 const TicTacToe = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const { tableData, turn, winner } = state;
+    const { tableData, turn, winner, recentCell } = state;
     // const [winner, setWinner] = useState('');
     // const [turn, setTurn] = useState(0);
     // const [tableData, setTableData] = useState([['','',''],['','',''],['','','']]);
 
     const onClickTable = useCallback( () => {
-        dispatch({ type: SET_WINNER, winner: '0' });
-        dispatch({ type: RESET_GAME });
+        dispatch({ type: SET_WINNER, winner: 'O' });
     }, []);
 
     useEffect( () => {
@@ -83,6 +82,7 @@ const TicTacToe = () => {
         
         if(win) { //승리시
             dispatch({ type: SET_WINNER, winner: turn });
+            dispatch({ type: RESET_GAME });
         } else { //무승부 검사
             let all = true; //all이 true면 무승부라는 뜻
             tableData.forEach( (row) => {
@@ -95,7 +95,7 @@ const TicTacToe = () => {
             if(all) {
                 dispatch({ type: RESET_GAME });        
             } else {
-                dispatch({ type:CHANGE_TURN });
+                dispatch({ type: CHANGE_TURN });
             }
         }
     }, [recentCell])
