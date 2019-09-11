@@ -1,14 +1,16 @@
 import React, { useCallback } from 'react';
 import CLICK_CELL from './TicTacToe';
+import CHANGE_TURN from './TicTacToe';
 
-const Td = ({ rowIndex, cellIndex }) => {
+const Td = ({ rowIndex, cellIndex, dispatch, cellData }) => {
     const onClickTd = useCallback( () => {
         console.log(rowIndex, cellIndex);
         dispatch({ type: CLICK_CELL, row: rowIndex, cell: cellIndex});
+        dispatch({ type:CHANGE_TURN });
     }, []);
     
     return (
-        <td onClick={onClickTd}>{''}</td>
+        <td onClick={onClickTd}>{cellData}</td>
     )
 };
 

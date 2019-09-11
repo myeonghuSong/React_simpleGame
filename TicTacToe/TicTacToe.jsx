@@ -9,6 +9,7 @@ const initialState = {
 
 export const SET_WINNER = 'SET_WINNER';
 export const CLICK_CELL = 'CLICK_CELL';
+export const CHANGE_TURN = 'CHANGE_TURN';
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -27,6 +28,12 @@ const reducer = (state, action) => {
                 tableData,
             }
         }
+        case CHANGE_TURN : {
+            return {
+                ...state,
+                turn: state.turn === 'O' ? 'X' : 'O',
+            }
+        }
     }
 };
 
@@ -43,7 +50,7 @@ const TicTacToe = () => {
 
     return (
         <>
-            <Table onClick={onClickTable} tableData={state.tableData}/>
+            <Table onClick={onClickTable} tableData={state.tableData} dispatch={dispatch}/>
             {state.winner && <div>{state.winner}님의 승리</div>}
         </>
     )
